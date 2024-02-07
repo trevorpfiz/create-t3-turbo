@@ -37,7 +37,7 @@ const defineConfig = (): ExpoConfig => ({
     tsconfigPaths: true,
     typedRoutes: true,
   },
-  plugins: ["expo-router"],
+  plugins: ["expo-router", "expo-secure-store"],
 });
 
 export default defineConfig;

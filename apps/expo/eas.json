@@ -27,5 +27,12 @@
   },
   "submit": {
     "production": {}
+  },
+  "expo": {
+    "ios": {
+      "config": {
+        "usesNonExemptEncryption": false
+      }
+    }
   }
 }
