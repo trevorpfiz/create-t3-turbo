@@ -102,7 +102,7 @@ function MobileAuth() {
 
   return (
     <>
-      <Text className="pb-2 text-center text-xl font-semibold text-white">
+      <Text className="pb-2 text-center text-xl font-semibold">
         {user?.name ?? "Not logged in"}
       </Text>
       <Button
