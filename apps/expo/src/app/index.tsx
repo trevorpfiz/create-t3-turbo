@@ -110,6 +110,11 @@ function MobileAuth() {
         title={user ? "Sign Out" : "Sign In With Discord"}
         color={"#5B65E9"}
       />
+      {/* <Button
+        onPress={() => (user ? signOut() : signIn())}
+        title={user ? "Sign Out" : "Sign In With Apple"}
+        color={"#777"}
+      /> */}
     </>
   );
 }
@@ -118,10 +123,6 @@ export default function Index() {
   const utils = api.useUtils();
 
   const postQuery = api.post.all.useQuery();
-
-  const user = useUser();
-  const signIn = useSignIn();
-  const signOut = useSignOut();
 
   const deletePostMutation = api.post.delete.useMutation({
     onSettled: () => utils.post.all.invalidate().then(),
@@ -144,15 +145,6 @@ export default function Index() {
         >
           <Text className="text-foreground"> Refresh posts</Text>
         </Pressable>
-
-        <Text className="pb-2 text-center text-xl font-semibold text-white">
-          {user?.name ?? "Not logged in"}
-        </Text>
-        <Button
-          onPress={() => (user ? signOut() : signIn())}
-          title={user ? "Sign Out" : "Sign In With Discord"}
-          color={"#5B65E9"}
-        />
 
         <View className="py-2">
           <Text className="font-semibold italic text-primary">
