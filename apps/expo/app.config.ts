@@ -1,8 +1,8 @@
 import type { ExpoConfig } from "expo/config";
 
 const defineConfig = (): ExpoConfig => ({
-  name: "expo",
-  slug: "expo",
+  name: "t3-turbo",
+  slug: "t3-turbo",
   scheme: "expo",
   version: "0.1.0",
   orientation: "portrait",
@@ -18,14 +18,14 @@ const defineConfig = (): ExpoConfig => ({
   },
   assetBundlePatterns: ["**/*"],
   ios: {
-    bundleIdentifier: "your.bundle.identifier",
+    bundleIdentifier: "t3.turbo.test",
     supportsTablet: true,
     config: {
       usesNonExemptEncryption: false,
     },
   },
   android: {
-    package: "your.bundle.identifier",
+    package: "t3.turbo.test",
     adaptiveIcon: {
       foregroundImage: "./assets/icon.png",
       backgroundColor: "#1F104A",
