@@ -20,6 +20,9 @@ const defineConfig = (): ExpoConfig => ({
   ios: {
     bundleIdentifier: "your.bundle.identifier",
     supportsTablet: true,
+    config: {
+      usesNonExemptEncryption: false,
+    },
   },
   android: {
     package: "your.bundle.identifier",
@@ -28,16 +31,16 @@ const defineConfig = (): ExpoConfig => ({
       backgroundColor: "#1F104A",
     },
   },
-  // extra: {
-  //   eas: {
-  //     projectId: "your-eas-project-id",
-  //   },
-  // },
+  extra: {
+    eas: {
+      projectId: "0ee0ff48-c801-409d-8da8-504576f23414",
+    },
+  },
   experiments: {
     tsconfigPaths: true,
     typedRoutes: true,
   },
-  plugins: ["expo-router"],
+  plugins: ["expo-router", "expo-secure-store"],
 });
 
 export default defineConfig;

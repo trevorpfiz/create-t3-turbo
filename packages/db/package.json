@@ -27,6 +27,7 @@
     "dotenv-cli": "^7.3.0",
     "drizzle-kit": "^0.20.14",
     "eslint": "^8.56.0",
+    "mysql2": "^3.9.1",
     "prettier": "^3.2.5",
     "typescript": "^5.3.3"
   },
