@@ -30,6 +30,7 @@ export const GET = async (
 
   if (nextauthAction === "callback" && !!isExpoCallback) {
     cookies().delete(EXPO_COOKIE_NAME);
+    console.log("callback", req);
 
     const authResponse = await DEFAULT_GET(req);
     console.log("authResponse", authResponse);
@@ -45,6 +46,7 @@ export const GET = async (
     return NextResponse.redirect(url);
   }
 
+  console.log("web", req);
   // Every other request just calls the default handler
   return DEFAULT_GET(req);
 };
