@@ -32,11 +32,15 @@ export const GET = async (
     cookies().delete(EXPO_COOKIE_NAME);
 
     const authResponse = await DEFAULT_GET(req);
+    console.log("authResponse", authResponse);
     const setCookie = authResponse.headers.getSetCookie()[0];
+    console.log("setCookie", setCookie);
     const match = setCookie?.match(AUTH_COOKIE_PATTERN)?.[1];
+    console.log("match", match);
     if (!match) throw new Error("Unable to find session cookie");
 
     const url = new URL(isExpoCallback.value);
+    console.log("url", url);
     url.searchParams.set("session_token", match);
     return NextResponse.redirect(url);
   }
