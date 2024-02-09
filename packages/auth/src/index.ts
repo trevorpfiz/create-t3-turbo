@@ -3,6 +3,7 @@ import { DrizzleAdapter } from "@auth/drizzle-adapter";
 import NextAuth from "next-auth";
 import Apple from "next-auth/providers/apple";
 import Discord from "next-auth/providers/discord";
+import Google from "next-auth/providers/google";
 
 import { db, tableCreator } from "@acme/db";
 
@@ -25,7 +26,7 @@ export const {
   signOut,
 } = NextAuth({
   adapter,
-  providers: [Discord, Apple],
+  providers: [Discord, Apple, Google],
   callbacks: {
     session: ({ session, user }) => ({
       ...session,

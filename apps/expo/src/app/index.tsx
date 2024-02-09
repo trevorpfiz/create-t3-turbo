@@ -107,13 +107,8 @@ function MobileAuth() {
       </Text>
       <Button
         onPress={() => (user ? signOut() : signIn())}
-        title={user ? "Sign Out" : "Sign In With Discord"}
+        title={user ? "Sign Out" : "Sign In"}
         color={"#5B65E9"}
-      />
-      <Button
-        onPress={() => (user ? signOut() : signIn())}
-        title={user ? "Sign Out" : "Sign In With Apple"}
-        color={"#777"}
       />
     </>
   );
