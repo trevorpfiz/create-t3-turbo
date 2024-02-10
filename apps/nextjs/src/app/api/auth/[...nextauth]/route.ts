@@ -34,7 +34,7 @@ export const GET = async (
 
     const authResponse = await DEFAULT_GET(req);
     console.log("authResponse", authResponse);
-    const setCookie = authResponse.headers.getSetCookie()[0];
+    const setCookie = authResponse.headers.getSetCookie()[1];
     console.log("setCookie", setCookie);
     const match = setCookie?.match(AUTH_COOKIE_PATTERN)?.[1];
     console.log("match", match);
