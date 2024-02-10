@@ -7,6 +7,8 @@ import Google from "next-auth/providers/google";
 
 import { db, tableCreator } from "@acme/db";
 
+import { env } from "../env";
+
 export type { Session } from "next-auth";
 
 declare module "next-auth" {
@@ -26,7 +28,31 @@ export const {
   signOut,
 } = NextAuth({
   adapter,
-  providers: [Discord, Apple, Google],
+  providers: [
+    Discord,
+    Google,
+    Apple({
+      clientId: env.AUTH_APPLE_ID,
+      clientSecret: env.AUTH_APPLE_SECRET,
+      wellKnown: "https://appleid.apple.com/.well-known/openid-configuration",
+      checks: ["pkce"],
+      token: {
+        url: `https://appleid.apple.com/auth/token`,
+      },
+      authorization: {
+        url: "https://appleid.apple.com/auth/authorize",
+        params: {
+          scope: "",
+          response_type: "code",
+          response_mode: "query",
+          state: crypto.randomUUID(),
+        },
+      },
+      client: {
+        token_endpoint_auth_method: "client_secret_post",
+      },
+    }),
+  ],
   callbacks: {
     session: ({ session, user }) => ({
       ...session,
@@ -47,6 +73,7 @@ export const {
       },
     },
   },
+  secret: env.AUTH_SECRET,
 });
 
 export const validateToken = async (token: string): Promise<Session | null> => {

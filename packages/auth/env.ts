@@ -9,6 +9,8 @@ export const env = createEnv({
       process.env.NODE_ENV === "production"
         ? z.string().min(1)
         : z.string().min(1).optional(),
+    AUTH_APPLE_ID: z.string().min(1),
+    AUTH_APPLE_SECRET: z.string().min(1),
   },
   client: {},
   experimental__runtimeEnv: {},
