@@ -36,17 +36,17 @@ export const {
       },
     }),
   },
-  // cookies: {
-  //   pkceCodeVerifier: {
-  //     name: "next-auth.pkce.code_verifier",
-  //     options: {
-  //       httpOnly: true,
-  //       sameSite: "none",
-  //       path: "/",
-  //       secure: true,
-  //     },
-  //   },
-  // },
+  cookies: {
+    pkceCodeVerifier: {
+      name: "authjs.pkce.code_verifier",
+      options: {
+        httpOnly: true,
+        sameSite: "none",
+        path: "/",
+        secure: process.env.NODE_ENV === "production",
+      },
+    },
+  },
 });
 
 export const validateToken = async (token: string): Promise<Session | null> => {

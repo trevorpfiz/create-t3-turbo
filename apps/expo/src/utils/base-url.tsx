@@ -21,6 +21,6 @@ export const getBaseUrl = () => {
     return `https://${process.env.EXPO_PUBLIC_API_ROOT_DOMAIN}`;
   }
   console.log("url", `https://${process.env.EXPO_PUBLIC_API_ROOT_DOMAIN}`);
-  return `https://${process.env.EXPO_PUBLIC_API_ROOT_DOMAIN}`;
+  // return `https://${process.env.EXPO_PUBLIC_API_ROOT_DOMAIN}`;
   return `http://${localhost}:3000`;
 };

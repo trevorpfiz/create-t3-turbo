@@ -7,6 +7,7 @@ import { deleteToken, setToken } from "./session-store";
 
 export const signIn = async () => {
   const signInUrl = `${getBaseUrl()}/api/auth/signin`;
+  console.log("sign in url", signInUrl);
   const redirectTo = Linking.createURL("/login");
   console.log("redirect to", redirectTo);
   const result = await Browser.openAuthSessionAsync(

@@ -30,23 +30,17 @@ export const GET = async (
 
   if (nextauthAction === "callback" && !!isExpoCallback) {
     cookies().delete(EXPO_COOKIE_NAME);
-    console.log("callback", req);
 
     const authResponse = await DEFAULT_GET(req);
-    console.log("authResponse", authResponse);
     const setCookie = authResponse.headers.getSetCookie()[1];
-    console.log("setCookie", setCookie);
     const match = setCookie?.match(AUTH_COOKIE_PATTERN)?.[1];
-    console.log("match", match);
     if (!match) throw new Error("Unable to find session cookie");
 
     const url = new URL(isExpoCallback.value);
-    console.log("url", url);
     url.searchParams.set("session_token", match);
     return NextResponse.redirect(url);
   }
 
-  console.log("web", req);
   // Every other request just calls the default handler
   return DEFAULT_GET(req);
 };
